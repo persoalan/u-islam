@@ -4,97 +4,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ name }} | Persoalan.com</title>
+
+  <title>{{ name }} | U-Islam.com</title>
   <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="https://u-islam.com{{ page.url }}">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
   <style>
     :root {
-      --maroon: #650B19;
-      --dark: #430D1B;
+      --green: #075E45;
+      --green-dark: #043D2F;
+      --gold: #D4AF37;
+      --ink: #15233b;
+      --muted: #65748b;
+      --bg: #f5f8f5;
+      --border: #dce9e1;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      color: #10213a;
-      background: #f6f8fb;
+      font-family: system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
       line-height: 1.6;
     }
-    .wrap { max-width: 1120px; margin: auto; padding: 0 20px; }
-    header { background: white; border-bottom: 1px solid #eee; }
-    .nav {
-      display: flex; justify-content: space-between;
-      align-items: center; padding: 18px 20px;
-      flex-wrap: wrap; gap: 16px;
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: 1120px;
+      margin: auto;
+      padding: 0 20px;
     }
-    .logo { font-weight: 800; font-size: 22px; color: #10213a; text-decoration: none; }
-    .logo span { color: var(--maroon); }
-    nav a { margin-left: 18px; color: #10213a; text-decoration: none; }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 850;
+      font-size: 22px;
+      color: var(--green);
+      letter-spacing: -.7px;
+    }
+
+    .logo span { color: var(--gold); }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: var(--green); }
+
     .hero {
       padding: 65px 0;
       color: white;
-      background: linear-gradient(135deg,#430D1B 0%,#650B19 52%,#390A16 100%);
+      background: linear-gradient(
+        135deg,
+        #043D2F 0%,
+        #075E45 52%,
+        #0B8060 100%
+      );
     }
-    h1 { font-size: clamp(32px,5vw,48px); margin: 0 0 12px; }
-    .hero p { max-width: 750px; }
-    main { padding: 50px 0; }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 750px;
+      color: #e0f4e9;
+      margin: 0;
+    }
+
+    main { padding: 50px 20px; }
+
+    main h2 {
+      font-size: 26px;
+      margin: 0 0 25px;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
+      grid-template-columns:
+        repeat(auto-fit, minmax(270px, 1fr));
       gap: 20px;
     }
+
     .card {
+      display: block;
       background: white;
-      border: 1px solid #eee;
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 25px;
-      text-decoration: none;
       color: inherit;
       box-shadow: 0 5px 20px rgba(0,0,0,.04);
+      transition: .2s ease;
     }
-    .card:hover { border-color: var(--maroon); }
-    .card h3 { margin: 0 0 10px; }
-    .card p { color: #52647d; margin: 0; }
-    footer { text-align: center; padding: 30px; color: #64748b; }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .empty {
+      padding: 30px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--muted);
+      background: white;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav { justify-content: center; }
+
+      .hero { padding: 50px 0; }
+
+      main { padding: 35px 20px; }
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="wrap nav">
-      <a class="logo" href="/">persoalan<span>.com</span></a>
-      <nav>
-        <a href="/">Utama</a>
-        <a href="/#kategori">Kategori</a>
-        {% for item in collections.halaman | sort(attribute="data.menu_order") %}
-          {% if item.data.show_in_menu %}
-            <a href="{{ item.url }}">{{ item.data.title }}</a>
-          {% endif %}
-        {% endfor %}
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="wrap">
-      <h1>{{ name }}</h1>
-      <p>{{ description }}</p>
-    </div>
-  </section>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="/">u-islam<span>.com</span></a>
 
-  <main class="wrap">
-    <h2>Artikel {{ name }}</h2>
-    <div class="grid">
-      {% set categoryName = name %}
-      {% for post in collections.artikel | reverse %}
-        {% if post.data.category == categoryName %}
-          <a class="card" href="{{ post.url }}">
-            <h3>{{ post.data.title }}</h3>
-            <p>{{ post.data.description or post.data.summary or "Baca artikel penuh." }}</p>
-          </a>
+    <nav aria-label="Navigasi utama">
+      <a href="/">Utama</a>
+      <a href="/#kategori">Kategori</a>
+
+      {% for item in collections.halaman | sort(attribute="data.menu_order") %}
+        {% if item.data.show_in_menu %}
+          <a href="{{ item.url }}">{{ item.data.title }}</a>
         {% endif %}
       {% endfor %}
-    </div>
-  </main>
+    </nav>
+  </div>
+</header>
 
-  <footer>© Persoalan.com</footer>
+<section class="hero">
+  <div class="wrap">
+    <h1>{{ name }}</h1>
+    <p>{{ description }}</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <h2>Artikel {{ name }}</h2>
+
+  {% set categoryName = name %}
+  {% set jumlahArtikel = 0 %}
+
+  <div class="grid">
+    {% for post in collections.artikel | reverse %}
+      {% if post.data.category == categoryName %}
+        {% set jumlahArtikel = jumlahArtikel + 1 %}
+
+        <a class="card" href="{{ post.url }}">
+          <h3>{{ post.data.title }}</h3>
+          <p>
+            {{ post.data.description
+               or post.data.summary
+               or "Baca artikel penuh." }}
+          </p>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if jumlahArtikel == 0 %}
+    <div class="empty">
+      Belum ada artikel dalam kategori ini.
+      Nantikan perkongsian ilmu yang akan datang.
+    </div>
+  {% endif %}
+</main>
+
+<footer>
+  © <span id="year">2026</span>
+  U-Islam.com. Hak cipta terpelihara.
+</footer>
+
+<script>
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+</script>
+
 </body>
 </html>
