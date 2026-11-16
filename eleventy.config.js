@@ -1,0 +1,34 @@
+
+export default function (eleventyConfig) {
+
+  // Salin artikel statik sedia ada
+  eleventyConfig.addPassthroughCopy(
+    "kesihatan/kenapa-perlu-tidur-cukup"
+  );
+
+  // Fail CMS dan gambar
+  eleventyConfig.addPassthroughCopy("admin");
+  eleventyConfig.addPassthroughCopy("favicon.ico");
+  eleventyConfig.addPassthroughCopy("favicon.png");
+  eleventyConfig.addPassthroughCopy("images");
+
+  // Fail SEO
+  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy("sitemap.xml");
+
+  // Abaikan folder sistem
+  eleventyConfig.ignores.add("README.md");
+  eleventyConfig.ignores.add("netlify/**");
+  eleventyConfig.ignores.add("node_modules/**");
+  eleventyConfig.ignores.add("_site/**");
+
+  return {
+    dir: {
+      input: ".",
+      includes: "_includes",
+      output: "_site"
+    },
+    templateFormats: ["md", "njk", "html"],
+    htmlTemplateEngine: "njk"
+  };
+}

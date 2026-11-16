@@ -1,0 +1,510 @@
+
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Persoalan.com — Setiap Persoalan, Ada Jawapannya</title>
+  <meta name="description" content="Persoalan.com ialah portal ilmu Bahasa Melayu. Terokai artikel kesihatan, agama, teknologi, kewangan, pendidikan, kehidupan, biodata, sukan dan pengetahuan am.">
+  <link rel="canonical" href="https://persoalan.com/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+
+  <style>
+    :root {
+      --maroon: #650B19;
+      --maroon-dark: #390A16;
+      --red: #99000D;
+      --ink: #15233b;
+      --muted: #65748b;
+      --bg: #f5f7fb;
+      --border: #e9dce0;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1100px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .header {
+      background: white;
+      border-bottom: 1px solid #eee;
+    }
+
+    .header-inner {
+      min-height: 68px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--red);
+      font-weight: 850;
+      font-size: 22px;
+      letter-spacing: -0.8px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 22px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav a:hover,
+    .footer a:hover { color: #c22539; }
+
+    .hero {
+      background: linear-gradient(
+        135deg,
+        #430D1B 0%,
+        #650B19 52%,
+        #390A16 100%
+      );
+      color: white;
+      text-align: center;
+      padding: 88px 20px 94px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: .85;
+      margin: 0 0 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+      margin: 0 0 18px;
+      font-weight: 850;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 0 auto 30px;
+      font-size: 15px;
+      color: #f5dfe4;
+    }
+
+    .search {
+      display: flex;
+      background: white;
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 6px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px #0002;
+    }
+
+    .search input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      padding: 12px 14px;
+      font-size: 14px;
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .search button {
+      background: #650B19;
+      border: 0;
+      color: white;
+      border-radius: 7px;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .search button:hover { background: #99000D; }
+
+    .search-note {
+      display: block;
+      margin-top: 12px;
+      font-size: 12px;
+      color: #f3cbd4;
+    }
+
+    .section { padding: 65px 0 85px; }
+
+    .section h2 {
+      font-size: clamp(23px, 3vw, 30px);
+      line-height: 1.3;
+      letter-spacing: -.6px;
+      margin: 0 0 8px;
+    }
+
+    .lead {
+      color: var(--muted);
+      margin: 0 0 28px;
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      display: block;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 25px;
+      min-height: 175px;
+      box-shadow: 0 4px 14px #1a243008;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #bc8994;
+      box-shadow: 0 12px 26px #1a243015;
+    }
+
+    .symbol {
+      font-size: 25px;
+      margin-bottom: 13px;
+      line-height: 1.2;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      margin: 0 0 8px;
+      font-weight: 750;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .footer {
+      background: white;
+      border-top: 1px solid #e9e9ed;
+      padding: 25px 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 750px) {
+      .header-inner {
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px 0;
+        gap: 8px;
+      }
+
+      .nav {
+        justify-content: center;
+        gap: 14px;
+        font-size: 12px;
+      }
+
+      .hero { padding: 65px 18px 75px; }
+
+      .grid { grid-template-columns: repeat(2, 1fr); }
+
+      .card { padding: 20px; min-height: 165px; }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { width: calc(100% - 30px); }
+
+      .grid { grid-template-columns: 1fr; gap: 12px; }
+
+      .card { min-height: auto; padding: 19px; }
+
+      .section { padding: 45px 0 55px; }
+
+      .search button { padding: 12px 17px; }
+
+      .footer-inner { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">persoalan.com</a>
+
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="/">Utama</a>
+      <a href="#kategori">Kategori</a>
+      <a href="/tentang-kami/">Tentang Kami</a>
+      <a href="/iklan-kerjasama/">Iklan & Kerjasama</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Portal Ilmu & Informasi</p>
+
+      <h1>Setiap Persoalan,<br>Ada Jawapannya.</h1>
+
+      <p>
+        Ruang untuk meneroka ilmu, memahami pelbagai topik
+        dan mencari jawapan kepada persoalan kehidupan.
+      </p>
+
+      <form class="search" id="searchForm" role="search">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Apa persoalan anda hari ini?"
+          aria-label="Cari artikel"
+          required
+        >
+        <button type="submit">Cari</button>
+      </form>
+
+      <span class="search-note" id="searchStatus">
+        Carian artikel Persoalan.com
+      </span>
+    </div>
+  </section>
+
+  <section class="section" id="kategori">
+    <div class="wrap">
+      <h2>Terokai mengikut kategori</h2>
+      <p class="lead">
+        Pelbagai bidang ilmu, satu tempat untuk bermula.
+      </p>
+
+      <div class="grid">
+
+        {% set susunan = [
+          "Kesihatan",
+          "Agama",
+          "Teknologi",
+          "Kewangan",
+          "Pendidikan",
+          "Kehidupan",
+          "Biodata",
+          "Sukan",
+          "Pengetahuan Am"
+        ] %}
+
+        {% for namaKategori in susunan %}
+          {% for item in collections.kategori %}
+            {% if item.data.name == namaKategori %}
+
+              {% set nama = item.data.name %}
+              {% set slug = nama | slugify %}
+
+              <a class="card category-link"
+                 href="/{{ slug }}/">
+
+                <div class="symbol" aria-hidden="true">
+                  {% if nama == "Kesihatan" %}🩺
+                  {% elif nama == "Agama" %}🕌
+                  {% elif nama == "Teknologi" %}💻
+                  {% elif nama == "Kewangan" %}💰
+                  {% elif nama == "Pendidikan" %}📚
+                  {% elif nama == "Kehidupan" %}🌱
+                  {% elif nama == "Biodata" %}👤
+                  {% elif nama == "Sukan" %}⚽
+                  {% elif nama == "Pengetahuan Am" %}🌍
+                  {% else %}📖
+                  {% endif %}
+                </div>
+
+                <h3>{{ nama }}</h3>
+                <p>{{ item.data.description }}</p>
+
+              </a>
+
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+
+        {% for item in collections.kategori %}
+          {% if item.data.name not in susunan %}
+
+            <a class="card category-link"
+               href="{{ item.url }}">
+
+              <div class="symbol" aria-hidden="true">📖</div>
+
+              <h3>{{ item.data.name }}</h3>
+              <p>{{ item.data.description }}</p>
+
+            </a>
+
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+
+    <span>
+      © <span id="year">2026</span>
+      Persoalan.com. Hak cipta terpelihara.
+    </span>
+
+    <div class="footer-links">
+      <a href="/tentang-kami/">Tentang Kami</a>
+      <a href="/iklan-kerjasama/">Iklan & Kerjasama</a>
+      <a href="mailto:persoalanmy@gmail.com">Hubungi Kami</a>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+
+
+const form = document.getElementById('searchForm');
+const input = document.getElementById('searchInput');
+const status = document.getElementById('searchStatus');
+
+const results = document.createElement('div');
+results.id = 'searchResults';
+results.style.cssText = `
+  max-width: 800px;
+  margin: 25px auto 0;
+  text-align: left;
+  display: grid;
+  gap: 12px;
+`;
+
+form.parentElement.appendChild(results);
+
+function escapeHTML(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[char]));
+}
+
+form.addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  const query = input.value.trim().toLocaleLowerCase('ms');
+
+  if (!query) return;
+
+  status.textContent = 'Sedang mencari artikel...';
+  results.replaceChildren();
+
+  try {
+    const response = await fetch('/search-index.json');
+
+    if (!response.ok) throw new Error('Gagal memuatkan indeks');
+
+    const articles = await response.json();
+
+    const matches = articles.filter(article => {
+      const text = [
+        article.title,
+        article.category,
+        article.description
+      ].join(' ').toLocaleLowerCase('ms');
+
+      return text.includes(query);
+    });
+
+    status.textContent = matches.length
+      ? `${matches.length} artikel ditemui.`
+      : 'Tiada artikel ditemui. Cuba kata kunci lain.';
+
+    matches.slice(0, 20).forEach(article => {
+      const card = document.createElement('a');
+      card.href = article.url;
+      card.style.cssText = `
+        display: block;
+        background: white;
+        color: #15233b;
+        padding: 18px 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        border: 1px solid #eadde0;
+      `;
+
+      card.innerHTML = `
+        <div style="font-size:11px;color:#99000D;font-weight:700">
+          ${escapeHTML(article.category)}
+        </div>
+        <strong style="display:block;margin:5px 0">
+          ${escapeHTML(article.title)}
+        </strong>
+        <div style="font-size:12px;color:#65748b">
+          ${escapeHTML(article.description)}
+        </div>
+      `;
+
+      results.appendChild(card);
+    });
+
+    if (matches.length > 20) {
+      status.textContent += ' Memaparkan 20 hasil pertama.';
+    }
+
+  } catch (error) {
+    status.textContent =
+      'Carian tidak dapat dimuatkan. Sila cuba lagi.';
+  }
+});
+
+</script>
+
+</body>
+</html>

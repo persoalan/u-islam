@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ title }} | Persoalan.com</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#99000D">
+
+  <link rel="canonical" href="https://persoalan.com{{ page.url }}">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ms_MY">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="https://persoalan.com{{ page.url }}">
+
+  <style>
+    :root {
+--red: #99000D;
+--dark-red: #76000A;
+      --ink: #172033;
+      --muted: #64748b;
+      --border: #e9e1e1;
+      --background: #faf8f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--ink);
+      line-height: 1.85;
+    }
+
+    a {
+      color: var(--red);
+    }
+
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 17px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      text-decoration: none;
+      color: var(--red);
+    }
+
+    .logo span {
+      color: #737b87;
+    }
+
+    .navigation {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navigation a {
+      font-size: 13px;
+      text-decoration: none;
+      color: #344054;
+    }
+
+    .navigation a:hover {
+      color: var(--red);
+    }
+
+.hero {
+  background: linear-gradient(120deg, #76000A, #99000D);
+  color: #fff;
+}
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 65px 24px 70px;
+    }
+
+    .breadcrumbs {
+      font-size: 13px;
+      margin-bottom: 23px;
+      opacity: .92;
+    }
+
+    .breadcrumbs a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hero h1 {
+      max-width: 820px;
+      font-size: clamp(32px, 4vw, 49px);
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      margin: 0 0 20px;
+    }
+
+    .hero-description {
+      max-width: 760px;
+      font-size: 16px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    .page-layout {
+      max-width: 1100px;
+      margin: 36px auto 70px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 245px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .article-card,
+    .sidebar-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(20, 20, 20, .025);
+    }
+
+    .article-card {
+      padding: 36px 40px;
+      min-width: 0;
+    }
+
+    .article-meta {
+      font-size: 13px;
+      color: var(--muted);
+      padding-bottom: 17px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 23px;
+    }
+
+    .article-content {
+      font-size: 16px;
+      line-height: 1.95;
+      overflow-wrap: break-word;
+    }
+
+    .article-content h2 {
+      font-size: 24px;
+      line-height: 1.4;
+      color: #152033;
+      margin: 36px 0 14px;
+      scroll-margin-top: 25px;
+    }
+
+    .article-content h3 {
+      font-size: 19px;
+      line-height: 1.5;
+      margin: 25px 0 12px;
+    }
+
+    .article-content p {
+      margin: 0 0 20px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 24px;
+      margin-bottom: 22px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content img,
+    .featured-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .featured-image {
+      display: block;
+      width: 100%;
+      margin-bottom: 26px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--red);
+      background: #fff7f7;
+      padding: 15px 20px;
+      margin: 24px 0;
+    }
+
+    .article-content hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 30px 0;
+    }
+
+    .sidebar-card {
+      padding: 22px;
+      position: sticky;
+      top: 24px;
+    }
+
+    .sidebar-title {
+      font-weight: 800;
+      font-size: 16px;
+      margin: 0 0 16px;
+    }
+
+    #toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #toc-list li {
+      border-bottom: 1px solid var(--border);
+    }
+
+    #toc-list li:last-child {
+      border-bottom: 0;
+    }
+
+    #toc-list a {
+      display: block;
+      padding: 12px 0;
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--red);
+    }
+
+    #toc-list a:hover {
+      color: var(--dark-red);
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .site-footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 20px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        order: -1;
+      }
+
+      .sidebar-card {
+        position: static;
+      }
+
+      .hero-inner {
+        padding-top: 45px;
+        padding-bottom: 48px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-inner {
+        padding: 14px 18px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .navigation {
+        gap: 12px;
+      }
+
+      .navigation a {
+        font-size: 12px;
+      }
+
+      .hero-inner {
+        padding: 38px 20px 45px;
+      }
+
+      .hero h1 {
+        font-size: 33px;
+        letter-spacing: -.7px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .page-layout {
+        padding: 0 14px;
+        margin-top: 20px;
+      }
+
+      .article-card {
+        padding: 24px 20px;
+      }
+
+      .article-content {
+        font-size: 15px;
+      }
+
+      .article-content h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">persoalan<span>.com</span></a>
+
+
+<nav class="navigation" aria-label="Navigasi utama">
+  <a href="/">Utama</a>
+  <a href="/kesihatan/">Kesihatan</a>
+
+  {% for item in collections.halaman | sort(attribute="data.menu_order") %}
+    {% if item.data.show_in_menu %}
+      <a href="{{ item.url }}">{{ item.data.title }}</a>
+    {% endif %}
+  {% endfor %}
+</nav>
+
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+
+      <div class="breadcrumbs">
+        <a href="/">Utama</a>
+        /
+        <a href="/{{ category | lower }}/">{{ category }}</a>
+        /
+        {{ title }}
+      </div>
+
+      <h1>{{ title }}</h1>
+
+      <p class="hero-description">
+        {{ description }}
+      </p>
+
+    </div>
+  </section>
+
+  <div class="page-layout">
+
+    <main class="article-card">
+
+      <div class="article-meta">
+        Kategori: {{ category }}
+        · Persoalan.com
+      </div>
+
+      {% if image %}
+        <img
+          class="featured-image"
+          src="{{ image }}"
+          alt="{{ title }}"
+          loading="lazy">
+      {% endif %}
+
+      <article class="article-content" id="article-content">
+        {{ content | safe }}
+      </article>
+
+      <a href="/{{ category | lower }}/" class="back-link">
+        ← Kembali ke kategori {{ category }}
+      </a>
+
+    </main>
+
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <h2 class="sidebar-title">Dalam artikel ini</h2>
+        <ul id="toc-list"></ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="site-footer">
+    © Persoalan.com · Portal Ilmu dan Persoalan
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const headings = document.querySelectorAll(
+        "#article-content h2"
+      );
+
+      const list = document.getElementById("toc-list");
+      const sidebar = document.querySelector(".sidebar");
+
+      if (!headings.length) {
+        sidebar.style.display = "none";
+        return;
+      }
+
+      headings.forEach(function (heading, index) {
+        const id = "bahagian-" + (index + 1);
+        heading.id = id;
+
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+
+        link.href = "#" + id;
+        link.textContent = heading.textContent;
+
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+    });
+  </script>
+
+</body>
+</html>
