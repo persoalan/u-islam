@@ -1,7 +1,7 @@
 
 backend:
   name: github
-  repo: persoalan/persoalan
+  repo: persoalan/u-islam
   branch: main
 
 media_folder: "images/uploads"
@@ -11,44 +11,103 @@ locale: "ms"
 
 collections:
   - name: "artikel"
-    label: "Artikel"
+    label: "Artikel Islam"
+    label_singular: "Artikel"
     folder: "content/artikel"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Tajuk", name: "title", widget: "string" }
-      - { label: "Tarikh", name: "date", widget: "datetime" }
-      
-      - label: "Kategori"
+      - label: "Tajuk Artikel"
+        name: "title"
+        widget: "string"
+
+      - label: "Tarikh"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Kategori Islam"
         name: "category"
         widget: "relation"
         collection: "kategori"
         search_fields: ["name"]
         display_fields: ["name"]
         value_field: "name"
-      - { label: "Ringkasan", name: "description", widget: "text" }
-      - { label: "Gambar", name: "image", widget: "image", required: false }
-      - { label: "Kandungan", name: "body", widget: "markdown" } 
+        options_length: 50
+
+      - label: "Ringkasan Artikel"
+        name: "description"
+        widget: "text"
+
+      - label: "Gambar Utama"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Sumber Rujukan"
+        name: "references"
+        widget: "text"
+        required: false
+        hint: "Nyatakan sumber dalil, kitab, fatwa atau rujukan ilmiah yang digunakan."
+
+      - label: "Kandungan Artikel"
+        name: "body"
+        widget: "markdown"
+
   - name: "kategori"
-    label: "Kategori"
+    label: "Kategori Islam"
+    label_singular: "Kategori"
     folder: "content/kategori"
     create: true
     slug: "{{slug}}"
     identifier_field: "name"
     fields:
-      - { label: "Nama Kategori", name: "name", widget: "string" }
-      - { label: "Penerangan", name: "description", widget: "text" }
-      - { label: "Kandungan Pengenalan", name: "body", widget: "markdown", required: false }
- 
+      - label: "Nama Kategori"
+        name: "name"
+        widget: "string"
+
+      - label: "Penerangan Kategori"
+        name: "description"
+        widget: "text"
+
+      - label: "Kandungan Pengenalan"
+        name: "body"
+        widget: "markdown"
+        required: false
+
   - name: "halaman"
-    label: "Halaman"
+    label: "Halaman Website"
+    label_singular: "Halaman"
     folder: "content/halaman"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Tajuk Halaman", name: "title", widget: "string" }
-      - { label: "Ringkasan SEO", name: "description", widget: "text" }
-      - { label: "Gambar Utama", name: "image", widget: "image", required: false }
-      - { label: "Paparkan dalam Menu Utama", name: "show_in_menu", widget: "boolean", default: false, required: false }
-      - { label: "Susunan Menu", name: "menu_order", widget: "number", default: 10, value_type: "int", min: 1, required: false }
-      - { label: "Kandungan", name: "body", widget: "markdown" }
+      - label: "Tajuk Halaman"
+        name: "title"
+        widget: "string"
+
+      - label: "Ringkasan SEO"
+        name: "description"
+        widget: "text"
+
+      - label: "Gambar Utama"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Paparkan dalam Menu Utama"
+        name: "show_in_menu"
+        widget: "boolean"
+        default: false
+        required: false
+
+      - label: "Susunan Menu"
+        name: "menu_order"
+        widget: "number"
+        default: 10
+        value_type: "int"
+        min: 1
+        required: false
+
+      - label: "Kandungan"
+        name: "body"
+        widget: "markdown"
