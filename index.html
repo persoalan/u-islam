@@ -4,22 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Persoalan.com — Setiap Persoalan, Ada Jawapannya</title>
-  <meta name="description" content="Persoalan.com ialah portal ilmu Bahasa Melayu. Terokai artikel kesihatan, agama, teknologi, kewangan, pendidikan, kehidupan, biodata, sukan dan pengetahuan am.">
-  <link rel="canonical" href="https://persoalan.com/">
+  <title>U-Islam.com — Portal Ilmu & Kehidupan Islam</title>
+  <meta name="description" content="U-Islam.com ialah portal ilmu Islam dalam Bahasa Melayu. Terokai Al-Quran, hadis, ibadah, fiqh, akhlak, sirah, doa dan kehidupan Muslim.">
+  <link rel="canonical" href="https://u-islam.com/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
 
   <style>
     :root {
-      --maroon: #650B19;
-      --maroon-dark: #390A16;
-      --red: #99000D;
+      --maroon: #075E45;
+      --maroon-dark: #043B2C;
+      --red: #075E45;
       --ink: #15233b;
       --muted: #65748b;
-      --bg: #f5f7fb;
-      --border: #e9dce0;
+      --bg: #f7faf7;
+      --border: #dce9e1;
     }
 
     * { box-sizing: border-box; }
@@ -72,14 +72,14 @@
     }
 
     .nav a:hover,
-    .footer a:hover { color: #c22539; }
+    .footer a:hover { color: #0B8060; }
 
     .hero {
       background: linear-gradient(
         135deg,
-        #430D1B 0%,
-        #650B19 52%,
-        #390A16 100%
+        #043B2C 0%,
+        #075E45 52%,
+        #032D23 100%
       );
       color: white;
       text-align: center;
@@ -107,7 +107,7 @@
       max-width: 620px;
       margin: 0 auto 30px;
       font-size: 15px;
-      color: #f5dfe4;
+      color: #e0f5ea;
     }
 
     .search {
@@ -132,7 +132,7 @@
     }
 
     .search button {
-      background: #650B19;
+      background: #075E45;
       border: 0;
       color: white;
       border-radius: 7px;
@@ -141,13 +141,13 @@
       font-weight: 700;
     }
 
-    .search button:hover { background: #99000D; }
+    .search button:hover { background: #0B8060; }
 
     .search-note {
       display: block;
       margin-top: 12px;
       font-size: 12px;
-      color: #f3cbd4;
+      color: #d4eadd;
     }
 
     .section { padding: 65px 0 85px; }
@@ -184,7 +184,7 @@
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: #bc8994;
+      border-color: #D4AF37;
       box-shadow: 0 12px 26px #1a243015;
     }
 
@@ -270,7 +270,7 @@
 
 <header class="header">
   <div class="wrap header-inner">
-    <a class="brand" href="/">persoalan.com</a>
+    <a class="brand" href="/">u-islam.com</a>
 
     <nav class="nav" aria-label="Navigasi utama">
       <a href="/">Utama</a>
@@ -285,20 +285,20 @@
 
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Portal Ilmu & Informasi</p>
+      <p class="eyebrow">Portal Ilmu & Kehidupan Islam</p>
 
-      <h1>Setiap Persoalan,<br>Ada Jawapannya.</h1>
+      <h1>Mendalami Ilmu,<br>Menghayati Islam.</h1>
 
       <p>
-        Ruang untuk meneroka ilmu, memahami pelbagai topik
-        dan mencari jawapan kepada persoalan kehidupan.
+        Ruang untuk memahami ajaran Islam berasaskan sumber yang sahih,
+        serta mengamalkan ilmu dalam kehidupan seharian.
       </p>
 
       <form class="search" id="searchForm" role="search">
         <input
           type="search"
           id="searchInput"
-          placeholder="Apa persoalan anda hari ini?"
+          placeholder="Cari ilmu Islam yang anda ingin ketahui..."
           aria-label="Cari artikel"
           required
         >
@@ -306,7 +306,7 @@
       </form>
 
       <span class="search-note" id="searchStatus">
-        Carian artikel Persoalan.com
+        Carian artikel U-Islam.com
       </span>
     </div>
   </section>
@@ -315,21 +315,22 @@
     <div class="wrap">
       <h2>Terokai mengikut kategori</h2>
       <p class="lead">
-        Pelbagai bidang ilmu, satu tempat untuk bermula.
+        Terokai panduan, pengetahuan dan penghayatan Islam mengikut topik.
       </p>
 
       <div class="grid">
 
         {% set susunan = [
-          "Kesihatan",
-          "Agama",
-          "Teknologi",
-          "Kewangan",
-          "Pendidikan",
-          "Kehidupan",
-          "Biodata",
-          "Sukan",
-          "Pengetahuan Am"
+          "Al-Quran",
+          "Hadis",
+          "Fiqh & Hukum",
+          "Ibadah",
+          "Doa & Zikir",
+          "Akhlak & Adab",
+          "Sirah & Sejarah",
+          "Keluarga Islam",
+          "Pendidikan Islam",
+          "Soal Jawab Islam"
         ] %}
 
         {% for namaKategori in susunan %}
@@ -343,15 +344,16 @@
                  href="/{{ slug }}/">
 
                 <div class="symbol" aria-hidden="true">
-                  {% if nama == "Kesihatan" %}🩺
-                  {% elif nama == "Agama" %}🕌
-                  {% elif nama == "Teknologi" %}💻
-                  {% elif nama == "Kewangan" %}💰
-                  {% elif nama == "Pendidikan" %}📚
-                  {% elif nama == "Kehidupan" %}🌱
-                  {% elif nama == "Biodata" %}👤
-                  {% elif nama == "Sukan" %}⚽
-                  {% elif nama == "Pengetahuan Am" %}🌍
+                  {% if nama == "Al-Quran" %}📖
+                  {% elif nama == "Hadis" %}📜
+                  {% elif nama == "Fiqh & Hukum" %}⚖️
+                  {% elif nama == "Ibadah" %}🕌
+                  {% elif nama == "Doa & Zikir" %}🤲
+                  {% elif nama == "Akhlak & Adab" %}💚
+                  {% elif nama == "Sirah & Sejarah" %}🏛️
+                  {% elif nama == "Keluarga Islam" %}👨‍👩‍👧‍👦
+                  {% elif nama == "Pendidikan Islam" %}🎓
+                  {% elif nama == "Soal Jawab Islam" %}❓
                   {% else %}📖
                   {% endif %}
                 </div>
@@ -392,13 +394,13 @@
 
     <span>
       © <span id="year">2026</span>
-      Persoalan.com. Hak cipta terpelihara.
+      U-Islam.com. Hak cipta terpelihara.
     </span>
 
     <div class="footer-links">
       <a href="/tentang-kami/">Tentang Kami</a>
       <a href="/iklan-kerjasama/">Iklan & Kerjasama</a>
-      <a href="mailto:persoalanmy@gmail.com">Hubungi Kami</a>
+      <a href="/tentang-kami/">Hubungi Kami</a>
     </div>
 
   </div>
@@ -476,11 +478,11 @@ form.addEventListener('submit', async function(event) {
         padding: 18px 20px;
         border-radius: 10px;
         text-decoration: none;
-        border: 1px solid #eadde0;
+        border: 1px solid #dce9e1;
       `;
 
       card.innerHTML = `
-        <div style="font-size:11px;color:#99000D;font-weight:700">
+        <div style="font-size:11px;color:#0B8060;font-weight:700">
           ${escapeHTML(article.category)}
         </div>
         <strong style="display:block;margin:5px 0">
